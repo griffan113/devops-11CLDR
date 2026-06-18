@@ -26,6 +26,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    needs: unit-test
     steps:
       - uses: actions/checkout@v3
         with:
@@ -68,3 +69,25 @@ jobs:
         shell: bash
         run: |
           sh 'src/main/scripts/smoketest.sh'
+
+  # smoketest-pre:
+  #   runs-on: ubuntu-latest
+  #   needs: deploy-Pre
+  #   if: github.ref == 'refs/heads/release'
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Deploy
+  #       shell: bash
+  #       run: |
+  #         sh 'src/main/scripts/smoketest.sh'
+
+  # testeFuncionais:
+  #   runs-on: ubuntu-latest
+  #   needs: SmoketestPre
+  #   if: github.ref == 'refs/heads/release'
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Deploy
+  #       shell: bash
+  #       run: |
+  #         sh 'src/main/scripts/testesFuncionais.sh'
