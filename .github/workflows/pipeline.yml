@@ -2,7 +2,6 @@ name: pipeline
 
 on:
   push:
-    branches: ["feature"]
   workflow_dispatch:
 jobs:
   unit-test:
